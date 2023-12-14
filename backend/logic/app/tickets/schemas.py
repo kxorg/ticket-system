@@ -11,7 +11,6 @@ class Ticket(_BaseTicket):
     created_at: _dt.datetime
 
     class Config:
-        orm_mode = True
         from_attributes = True
 
 
