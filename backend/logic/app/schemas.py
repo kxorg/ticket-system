@@ -11,7 +11,11 @@ class Ticket(_BaseTicket):
 
     class Config:
         orm_mode = True
+        from_attributes=True
 
 
 class CreateTicket(_BaseTicket):
     pass
+
+class UpdateTicket(_BaseTicket):
+    created_at: _dt.datetime

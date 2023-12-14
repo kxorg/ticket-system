@@ -37,3 +37,12 @@ async def create_ticket(ticket: _schemas.Ticket, db: "Session") -> _schemas.Tick
     db.commit()
     db.refresh(ticket_model)
     return _schemas.Ticket(**ticket_model.__dict__)
+
+
+async def update_ticket(ticket_data: _schemas.CreateTicket, ticket: _models.Ticket, db: "Session") -> _schemas.Ticket:
+    ticket.created_at = ticket_data.created_at
+
+    db.commit()
+    db.refresh(ticket)
+
+    return _schemas.Ticket.from_orm(ticket)
