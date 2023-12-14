@@ -2,9 +2,9 @@ name: GitHub-actions-Basic
 
 on:
   push:
-    branches: [master, Nikolay]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   flake8:
