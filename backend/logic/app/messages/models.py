@@ -5,7 +5,8 @@ import datetime
 from database import Base 
 
 
-class Ticket(Base):
-    __tablename__ = "ticket"
+class Message(Base):
+    __tablename__ = "message"
     id = Column(Integer, primary_key=True, index=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    content = Column(String, nullable=True)

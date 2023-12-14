@@ -8,7 +8,8 @@ from . import schemas
 
 
 router = APIRouter(
-    prefix="/tickets",
+    prefix="/api/tickets",
+    tags=["Tickets"]
 )
 
 
