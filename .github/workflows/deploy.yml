@@ -22,7 +22,7 @@ jobs:
         docker compose down && \
         docker rmi ticket-system-logic && \
         git pull origin master && \
-        docker compose up'
+        docker compose up -d'
       env:
         SERVER_URL: ${{ secrets.SERVER_URL }}
         SSH_USER: ${{ secrets.SSH_USER }}
