@@ -18,7 +18,7 @@ jobs:
 
     - name: Deploy to Remote Server
       run: |
-        sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_URL }} 'cd ../var/www/ticket-system && \
+        sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_URL }} 'cd ../var/www/ticket-system && \
         docker compose down && \
         docker rmi ticket-system-logic && \
         git pull origin master && \
