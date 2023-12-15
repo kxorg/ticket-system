@@ -2,9 +2,9 @@ name: GitHub-actions-Basic
 
 on:
   push:
-    branches: [master, Nikolay]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   flake8:
@@ -26,4 +26,4 @@ jobs:
 
     - name: Run Flake8 FastAPI
       run: |
-        flake8 /backend/logic
+        flake8 ./backend/logic/
