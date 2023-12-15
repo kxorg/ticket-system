@@ -31,4 +31,3 @@ services:
       - ticket_postgres_data:/var/lib/postgresql/data
     networks:
       - ticketnetwork
-    
