@@ -9,4 +9,5 @@ class User(Base):
     __tablename__ = "user"
     id = Column(UUID, primary_key=True, index=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    name = Column(String, nullable=True)
+    name = Column(String, nullable=False)
+    hashed_password = Column(String, nullable=False)

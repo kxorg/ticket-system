@@ -13,6 +13,7 @@ class User(_BaseUser):
     id: UUID
     created_at: _dt.datetime
     name: str
+    hashed_password: str
 
     class Config:
         from_attributes = True
@@ -20,6 +21,8 @@ class User(_BaseUser):
 
 class CreateUser(_BaseUser):
     name: str
+    password: str
+
     @validator("name")
     def validate_name(cls, value):
         LETTER_MATCH_PATTERN = re.compile(r"^[a-zA-Z\-]+$")
