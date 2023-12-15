@@ -15,11 +15,12 @@ jobs:
 
     - name: Deploy to Remote Server
       run: |
-        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USER }}@your-remote-server-ip 'cd /var/www/ticket-system && \
+        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_URL }} 'cd ../var/www/ticket-system && \
         docker compose down && \
         docker rmi ticket-system-logic && \
         git pull origin master && \
         docker compose up'
       env:
+        SERVER_URL: ${{ secrets.SERVER_URL }}
         SSH_USER: ${{ secrets.SSH_USER }}
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
