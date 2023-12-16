@@ -12,6 +12,7 @@ while ! nc -z -w 1 db 5432; do
 done
 
 echo "...Running Alembic migrations..."
+alembic current
 alembic upgrade head
 
 echo "...Starting FastAPI app..."
