@@ -17,8 +17,11 @@ while ! nc -z -w 1 db 5432; do
 done
 
 echo "...Running Alembic migrations..."
-alembic revision --autogenerate -m "revision"
+echo "revision..."
+# alembic revision --autogenerate -m "revision"
+echo "current..."
 alembic current
+echo "upgrade head..."
 alembic upgrade head
 
 echo "...Starting FastAPI app..."
