@@ -11,11 +11,7 @@ RUN python -m venv /py && \
     apk update && \
     /py/bin/pip install --no-cache-dir -r /requirements.txt --use-pep517 && \
     adduser --disabled-password --gecos '' dockuser && \
-    chmod -R a+rw /app/migrations/versions && \
-    chmod -R 755 /app/migrations/versions && \
     chmod -R 755 /app && \
-    chown -R dockuser:dockuser /app && \
-    chown -R dockuser:dockuser /app/migrations/versions && \  
     chmod -R +x /scripts
 
 WORKDIR /app
@@ -23,5 +19,4 @@ WORKDIR /app
 EXPOSE 80
 
 ENV PATH="/scripts:/py/bin:$PATH"
-USER dockuser
 CMD ["run.sh"]

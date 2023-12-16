@@ -17,12 +17,13 @@ while ! nc -z -w 1 db 5432; do
 done
 
 echo "...Running Alembic migrations..."
-echo "revision..."
-# alembic revision --autogenerate -m "revision"
-echo "current..."
+alembic revision --autogenerate -m "message"
+echo "alembic select current..."
 alembic current
-echo "upgrade head..."
+echo "current DONE"
+echo "alembic upgrade head..."
 alembic upgrade head
+echo "upgrade DONE"
 
 echo "...Starting FastAPI app..."
 uvicorn main:app --reload --host 0.0.0.0 --port 80
