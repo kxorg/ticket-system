@@ -16,7 +16,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./backend/logic:/app
+      - ./backend/logic/app:/app
     networks:
       - ticketnetwork
     depends_on:
