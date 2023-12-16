@@ -1,21 +1,23 @@
 #!/bin/sh
 set -e
 
-echo ".........................................."
-echo "..Current user:..."
+echo "____________________________________________________________________"
+echo "Current user:"
 whoami
-echo "...pwd :..."
+echo "pwd:"
 pwd
-echo ".........................................."
+echo "____________________________________________________________________"
 
 echo "...Waiting for the database to be ready..."
 
 # Loop until the database port is open
 while ! nc -z -w 1 db 5432; do
+  echo "sleeping for 1 second..."
   sleep 1
 done
 
 echo "...Running Alembic migrations..."
+alembic revision --autogenerate -m "revision"
 alembic current
 alembic upgrade head
 
