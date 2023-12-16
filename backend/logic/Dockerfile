@@ -10,20 +10,18 @@ RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     apk update && \
     /py/bin/pip install --no-cache-dir -r /requirements.txt --use-pep517 && \
-    adduser --disabled-password --gecos '' user && \
-    chown -R user:user /app && \ 
+    adduser --disabled-password --gecos '' dockuser && \
+    chmod -R a+rw /app/migrations/versions && \
+    chmod -R 755 /app/migrations/versions && \
     chmod -R 755 /app && \
+    chown -R dockuser:dockuser /app && \
+    chown -R dockuser:dockuser /app/migrations/versions && \  
     chmod -R +x /scripts
 
 WORKDIR /app
 
 EXPOSE 80
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD pg_isready -h localhost -p 5432 || exit 1
-
-RUN ls -l /scripts
-
 ENV PATH="/scripts:/py/bin:$PATH"
-USER user
+USER dockuser
 CMD ["run.sh"]

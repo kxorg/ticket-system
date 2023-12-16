@@ -1,8 +1,12 @@
 #!/bin/sh
 set -e
 
+echo ".........................................."
+echo "..Current user:..."
 whoami
+echo "...pwd :..."
 pwd
+echo ".........................................."
 
 echo "...Waiting for the database to be ready..."
 
