@@ -17,7 +17,6 @@ while ! nc -z -w 1 db 5432; do
 done
 
 echo "...Running Alembic migrations..."
-alembic revision --autogenerate -m "message"
 echo "alembic select current..."
 alembic current
 echo "current DONE"
