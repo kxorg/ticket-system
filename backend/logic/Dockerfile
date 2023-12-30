@@ -16,7 +16,7 @@ RUN python -m venv /py && \
 
 WORKDIR /app
 
-EXPOSE 80
+EXPOSE 8000
 
 ENV PATH="/scripts:/py/bin:$PATH"
 CMD ["run.sh"]

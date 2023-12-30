@@ -43,3 +43,9 @@ services:
       - ticket_postgres_data:/var/lib/postgresql/data
     networks:
       - ticketnetwork
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    ports:
+      - 15672:15672
+    networks:
+      - ticketnetwork

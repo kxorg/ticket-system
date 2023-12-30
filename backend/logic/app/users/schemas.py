@@ -31,3 +31,17 @@ class CreateUser(_BaseUser):
                 status_code=422, detail="Name should contains only letters (not digits!)"
             )
         return value
+    
+
+class TokenBase(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenCreate(TokenBase):
+    pass
+
+class Token(TokenBase):
+    id: int
+
+    class Config:
+        from_attributes = True

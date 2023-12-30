@@ -17,5 +17,3 @@ Base = declarative_base()
 
 def _add_tables():
     return Base.metadata.create_all(bind=engine)
-
-    
