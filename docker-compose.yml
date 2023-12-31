@@ -5,6 +5,7 @@ volumes:
 
 networks:
   ticketnetwork:
+    driver: bridge
 
 services:
   web:
@@ -12,6 +13,7 @@ services:
     image: nginx:alpine
     depends_on:
       - logic
+      - telegram
     ports:
       - "80:80"
     volumes:
@@ -33,6 +35,23 @@ services:
       - ticketnetwork
     depends_on:
       - db
+      - rabbitmq
+
+  telegram:
+    build:
+      context: .
+      dockerfile: ./backend/telegram/Dockerfile
+    env_file:
+      - ./.env
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./backend/telegram/app:/app
+    networks:
+      - ticketnetwork
+    depends_on:
+      - rabbitmq
+      
   db:
     image: "postgres:15.4-alpine3.18"
     env_file:
@@ -43,9 +62,12 @@ services:
       - ticket_postgres_data:/var/lib/postgresql/data
     networks:
       - ticketnetwork
+
   rabbitmq:
-    image: rabbitmq:3.10.7-management
+    image: "rabbitmq:3.10.7-management"
+    container_name: "myrabbitmq"
     ports:
-      - 15672:15672
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - ticketnetwork
