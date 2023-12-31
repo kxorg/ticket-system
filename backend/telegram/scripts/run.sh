@@ -24,5 +24,5 @@ echo "____________________________________________________________________"
 # alembic upgrade head
 # echo "upgrade DONE"
 
-echo "...Starting FastAPI app..."
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+echo "...Starting TELEGRAM app..."
+uvicorn main:app --reload --host 0.0.0.0 --port 8001

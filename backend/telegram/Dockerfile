@@ -2,9 +2,9 @@ FROM python:3.11.5-alpine3.18
 
 ENV PYTHONUNBUFFERED 1
 
-COPY ./backend/logic/requirements.txt /requirements.txt
-COPY ./backend/logic/app /app
-COPY ./backend/logic/scripts /scripts
+COPY ./backend/telegram/requirements.txt /requirements.txt
+COPY ./backend/telegram/app /app
+COPY ./backend/telegram/scripts /scripts
 
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
@@ -16,7 +16,7 @@ RUN python -m venv /py && \
 
 WORKDIR /app
 
-EXPOSE 8000
+EXPOSE 8001
 
 ENV PATH="/scripts:/py/bin:$PATH"
 CMD ["run.sh"]
